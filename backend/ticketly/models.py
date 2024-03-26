@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 
 
@@ -22,7 +23,7 @@ class Event(models.Model):
     date = models.DateField()
     time = models.TimeField()
     description=models.TextField()
-    performers = [models.CharField(max_length=100)]
+    performers = ArrayField(models.CharField(max_length=25))
     img_url=models.TextField()
 
     def __str__(self):
