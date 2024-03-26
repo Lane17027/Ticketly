@@ -8,7 +8,7 @@ const VenuePage = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/venues')
-                const data = await response.json()
+                const data = response.data
                 setVenues(data)
             } catch (error) {
                 console.error('Error fetching data:', error)

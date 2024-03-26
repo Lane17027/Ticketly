@@ -9,6 +9,21 @@ const ReviewsPage = () => {
         e.preventDefault()
        
     }
+    const [reviews, setReviews] = useState([])
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/reviews/')
+                const data = response.data
+                setReviews(data)
+            } catch (error) {
+                console.error('Error fetching reviews:', error)
+            }
+        }
+
+        fetchReviews()
+    }, [])
 
     return (
         <div>
