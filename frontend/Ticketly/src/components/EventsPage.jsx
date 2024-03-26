@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const EventsPage = () => {
     const [events, setEvents] = useState([])
@@ -24,6 +25,9 @@ const EventsPage = () => {
                     <p>Description: {event.description}</p>
                     <p>Performers: {event.performers.join(', ')}</p>
                     <img src={event.img_url} alt={event.name} />
+                    <Link to={`/tickets/${event.id}`}>
+                        <button>Ticket</button>
+                    </Link>
                 </div>
             ))}
         </div>
