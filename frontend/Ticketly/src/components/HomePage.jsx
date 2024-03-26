@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-
 const HomePage = () => {
-    const [venueData, setVenueData] = useState(null)
-    const [eventData, setEventData] = useState(null)
-    const [reviewData, setReviewData] = useState(null)
+    const [venueData, setVenueData] = useState([])
+    const [eventData, setEventData] = useState([])
+    const [reviewData, setReviewData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const venueResponse = await axios.get('http://localhost:8000/venues')
+                const venueResponse = await axios.get('http://localhost:8000/venues/')
                 setVenueData(venueResponse.data)
 
                 const eventResponse = await axios.get('http://localhost:8000/events')
                 setEventData(eventResponse.data)
 
-                const reviewResponse = await axios.get('http://localhost:8000/reviews')
+                const reviewResponse = await axios.get('http://localhost:8000/reviews/')
                 setReviewData(reviewResponse.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -25,23 +24,28 @@ const HomePage = () => {
 
         fetchData()
     }, [])
+
     const [searchTerm, setSearchTerm] = useState('')
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value)
     }
 
-    const filteredVenues = venueData && Array.isArray(venueData) && venueData.filter((venue) => {
-        return venue.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    const handleVenueClick = (id) => {
+        console.log(`Venue clicked: ${id}`)
+    }
 
-    const filteredEvents = eventData && Array.isArray(eventData) && eventData.filter((event) => {
-        return event.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    const handleEventClick = (id) => {
+        console.log(`Event clicked: ${id}`)
+    }
 
-    const filteredReviews = reviewData && Array.isArray(reviewData) && reviewData.filter((review) => {
-        return review.text.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    const handleReviewClick = (id) => {
+        console.log(`Review clicked: ${id}`)
+    }
+
+    const filteredVenues = venueData.filter(venue => venue.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredEvents = eventData.filter(event => event.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredReviews = reviewData.filter(review => review.text.toLowerCase().includes(searchTerm.toLowerCase()))
 
     return (
         <div>
@@ -51,7 +55,7 @@ const HomePage = () => {
                 <input type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />
             </div>
             <div className="venue-container">
-                {filteredVenues && filteredVenues.map((venue) => (
+                {filteredVenues.map(venue => (
                     <div key={venue.id}>
                         <h2>{venue.name}</h2>
                         <p>{venue.city}, {venue.state} {venue.zipcode}</p>
@@ -61,7 +65,7 @@ const HomePage = () => {
                 ))}
             </div>
             <div className="event-container">
-                {filteredEvents && filteredEvents.map((event) => (
+                {filteredEvents.map(event => (
                     <div key={event.id}>
                         <h2>{event.name}</h2>
                         <p>Date: {event.date}</p>
@@ -72,11 +76,11 @@ const HomePage = () => {
                 ))}
             </div>
             <div className="review-container">
-                {filteredReviews && filteredReviews.map((review) => (
+                {filteredReviews.map(review => (
                     <div key={review.id}>
-                        <h2>Review</h2>
-                        <p>Venue: {review.venue}</p>
-                        <p>Event: {review.event}</p>
+                        <h2>{review.title}</h2>
+                        <p>Venue: {review.venue.name}</p>
+                        <p>Event: {review.event.name}</p>
                         <p>Text: {review.text}</p>
                         <p>Rating: {review.rating}</p>
                         <button onClick={() => handleReviewClick(review.id)}>Go to Review</button>
