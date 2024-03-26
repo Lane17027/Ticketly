@@ -10,13 +10,13 @@ const HomePage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const venueResponse = await axios.get('localhost:8000/venues')
+                const venueResponse = await axios.get('http://localhost:8000/venues')
                 setVenueData(venueResponse.data)
 
-                const eventResponse = await axios.get('localhost:8000/events')
+                const eventResponse = await axios.get('http://localhost:8000/events')
                 setEventData(eventResponse.data)
 
-                const reviewResponse = await axios.get('localhost:8000/reviews')
+                const reviewResponse = await axios.get('http://localhost:8000/reviews')
                 setReviewData(reviewResponse.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
