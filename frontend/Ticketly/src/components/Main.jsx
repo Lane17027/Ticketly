@@ -1,5 +1,4 @@
 import Header from "./Header"
-import Footer from "./Footer"
 import HomePage from "./HomePage"
 import React from 'react'
 import VenuePage from './VenuePage'
@@ -12,7 +11,6 @@ export default function Main(){
             <HomePage />
             <VenuePage />
             <EventsPage />
-            <Footer />
         </div>
     )
 }
