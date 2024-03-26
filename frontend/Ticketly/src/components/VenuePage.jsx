@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const VenuePage = () => {
     const [venues, setVenues] = useState([])
@@ -6,7 +7,7 @@ const VenuePage = () => {
         
         const fetchData = async () => {
             try {
-                const response = await fetch('API_ENDPOINT_URL')
+                const response = await axios.get('http://localhost:8000/venues')
                 const data = await response.json()
                 setVenues(data)
             } catch (error) {

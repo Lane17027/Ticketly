@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ReactComponent as MaterialSymbolsChair } from '../assets/material-symbols-chair.svg'
+import axios from 'axios'
 
 const TicketsPage = () => {
     const [selectedSeats, setSelectedSeats] = useState([])
@@ -12,7 +13,7 @@ const TicketsPage = () => {
     
     const fetchEventData = async () => {
         try {
-            const response = await fetch('https://api.example.com/events/1') 
+            const response = await axios.get('https://api.example.com/events/1') 
             const data = await response.json()
             setEventData(data)
         } catch (error) {

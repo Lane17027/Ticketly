@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 
     const NavBar = () => {
         const [searchQuery, setSearchQuery] = useState('')

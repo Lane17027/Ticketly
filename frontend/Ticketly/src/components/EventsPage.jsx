@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const EventsPage = () => {
     const [events, setEvents] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('API_ENDPOINT_URL')
+                const response = await axios.get('http://localhost:8000/events/')
                 const data = await response.json()
                 setEvents(data)
             } catch (error) {

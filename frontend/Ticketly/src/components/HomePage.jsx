@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+
 const HomePage = () => {
     const [venueData, setVenueData] = useState(null)
     const [eventData, setEventData] = useState(null)
@@ -9,13 +10,13 @@ const HomePage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const venueResponse = await axios.get('venue-api-endpoint')
+                const venueResponse = await axios.get('localhost:8000/venues')
                 setVenueData(venueResponse.data)
 
-                const eventResponse = await axios.get('event-api-endpoint')
+                const eventResponse = await axios.get('localhost:8000/events')
                 setEventData(eventResponse.data)
 
-                const reviewResponse = await axios.get('review-api-endpoint')
+                const reviewResponse = await axios.get('localhost:8000/reviews')
                 setReviewData(reviewResponse.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -30,15 +31,15 @@ const HomePage = () => {
         setSearchTerm(event.target.value)
     }
 
-    const filteredVenues = venueData && venueData.filter((venue) => {
+    const filteredVenues = venueData && Array.isArray(venueData) && venueData.filter((venue) => {
         return venue.name.toLowerCase().includes(searchTerm.toLowerCase())
     })
 
-    const filteredEvents = eventData && eventData.filter((event) => {
+    const filteredEvents = eventData && Array.isArray(eventData) && eventData.filter((event) => {
         return event.name.toLowerCase().includes(searchTerm.toLowerCase())
     })
 
-    const filteredReviews = reviewData && reviewData.filter((review) => {
+    const filteredReviews = reviewData && Array.isArray(reviewData) && reviewData.filter((review) => {
         return review.text.toLowerCase().includes(searchTerm.toLowerCase())
     })
 
