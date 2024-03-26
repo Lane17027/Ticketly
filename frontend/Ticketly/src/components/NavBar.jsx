@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
     const NavBar = () => {
         const [searchQuery, setSearchQuery] = useState('')
@@ -15,10 +16,10 @@ import { useState } from 'react'
                     <span className="logo-text">Ticketly</span>
                 </div>
                 <ul className="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/venue">Venue</a></li>
-                    <li><a href="/events">Events</a></li>
-                    <li><a href="/reviews">Reviews</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/venue">Venue</Link></li>
+                <li><Link to="/events">Events</Link></li>
+                <li><Link to="/reviews">Reviews</Link></li>
                 </ul>
                 <div className="search-bar">
                     <input
