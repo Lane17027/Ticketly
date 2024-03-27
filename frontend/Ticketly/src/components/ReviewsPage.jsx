@@ -65,62 +65,69 @@ const ReviewsPage = () => {
 
     return (
         <div>
-            <h1>Review Page</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title:</label>
-                <input
-                    type="text"
-                    id="title"
-                    value={title}
-                    onChange = {(e) => setTitle(e.target.value)}
-                />
+            <div className="reviews-header-container">
+                <h1>Customer Reviews</h1>
+                <p>See what others are saying</p>
+            </div>
 
-                <label htmlFor="text">Text:</label>
-                <textarea
-                    id="text"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                ></textarea>
-
-                <label htmlFor="rating">Rating:</label>
-                <input
-                    type="number"
-                    id="rating"
-                    value={rating}
-                    min={1}
-                    max={5}
-                    onChange={(e) => setRating(parseInt(e.target.value, 10))}
-                />
-
-                <label htmlFor='venueId'>Venue ID:</label>
-                <input
-                    type='text'
-                    id='venueId'
-                    value={venueId}
-                    onChange={(e) => setVenueId(e.target.value)}
+            <div>
+                <h1>Review Page</h1>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="title">Title:</label>
+                    <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
 
-                <label htmlFor='eventId'>Event ID:</label>
-                <input
-                    type='text'
-                    id='eventId'
-                    value={eventId}
-                    onChange={(e) => setEventId(e.target.value)}
+                    <label htmlFor="text">Text:</label>
+                    <textarea
+                        id="text"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                    ></textarea>
+
+                    <label htmlFor="rating">Rating:</label>
+                    <input
+                        type="number"
+                        id="rating"
+                        value={rating}
+                        min={1}
+                        max={5}
+                        onChange={(e) => setRating(parseInt(e.target.value, 10))}
                     />
 
-                <button type="submit">Submit Review</button>
-            </form>
+                    <label htmlFor="venueId">Venue ID:</label>
+                    <input
+                        type="text"
+                        id="venueId"
+                        value={venueId}
+                        onChange={(e) => setVenueId(e.target.value)}
+                    />
 
-            <div className="reviews-list">
-                {reviews.map((review) => (
-                    <div key={review.id} className="review">
-                        <h2>{review.title}</h2>
-                        <p>{review.text}</p>
-                        <p>Rating: {review.rating}</p>
-                        <button onClick={() => handleEdit(review)}>Edit</button>
-                        <button onClick={() => handleDelete(review.id)}>Delete</button>
-                    </div>
-                ))}
+                    <label htmlFor="eventId">Event ID:</label>
+                    <input
+                        type="text"
+                        id="eventId"
+                        value={eventId}
+                        onChange={(e) => setEventId(e.target.value)}
+                    />
+
+                    <button type="submit">Submit Review</button>
+                </form>
+
+                <div className="reviews-list">
+                    {reviews.map((review) => (
+                        <div key={review.id} className="review">
+                            <h2>{review.title}</h2>
+                            <p>{review.text}</p>
+                            <p>Rating: {review.rating}</p>
+                            <button onClick={() => handleEdit(review)}>Edit</button>
+                            <button onClick={() => handleDelete(review.id)}>Delete</button>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

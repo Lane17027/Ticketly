@@ -17,18 +17,24 @@ const VenuePage = () => {
         fetchData()
     }, [])
     return (
-        <div className="venue-page">
-            {venues.map((venue) => (
-                <div key={venue.id} className="venue-container">
-                    <h2>{venue.name}</h2>
-                    <p>City: {venue.city}</p>
-                    <p>State: {venue.state}</p>
-                    <p>Zipcode: {venue.zipcode}</p>
-                     <p>Street Address: {venue.street_address}</p>
-                
-                </div>
-            ))}
+        <div>
+            <div className="venue-header-container">
+                <h1>Explore Venues</h1>
+                <p>Find venues and see upcoming events</p>
+            </div>
+
+            <div className="venue-page">
+                {venues.map((venue) => (
+                    <div key={venue.id} className="venue-container">
+                        <h2>{venue.name}</h2>
+                        <p>City: {venue.city}</p>
+                        <p>State: {venue.state}</p>
+                        <p>Zipcode: {venue.zipCode}</p>
+                        <p>Street Address: {venue.street_address}</p>
+                    </div>
+                ))}
+            </div>
         </div>
-    )
+    );
 }
 export default VenuePage

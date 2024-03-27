@@ -1,56 +1,341 @@
-/* General page styling, assuming your entire page should follow a specific theme */
+/* General page styling */
 .page-container {
-  background-color: #ffffff; /* Adjust this to match your page's desired background */
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-/* Header section styling */
+/* Header container styling */
 .header-container {
-  text-align: center; /* Centering header text */
-  padding: 20px; /* Add more padding if needed */
+  align-items: center;
+  background-color: #00000099;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 20px;
+  width: 100%;
+  color: #ffffff;
 }
 
-/* Styles for venue listings */
+.header-container h1 {
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.header-container p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.header-container input {
+  align-self: center;
+  border: 1px solid #0000001a;
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: 360px;
+}
+
+/* Venue listings styling */
 .venue-container {
-  margin-top: 20px;
-  width: 100%; /* Adjust width as necessary */
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  overflow-x: auto;
+}
+.venue-header-container {
+  align-items: center;
+  background-color: #225560; /* Different shade to distinguish venue page */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-/* Individual venue item styling */
-.venue-container div {
-  margin-bottom: 15px; /* Space between venue entries */
+.venue-header-container h1 {
+  color: #FFD700; /* Gold color for a bit of flair */
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 32px;
+  margin: 0;
+}
+
+.venue-header-container p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 18px;
+  color: #EAEAEA; /* Light grey for subtle contrast */
+  margin: 0;
+}
+
+.venue-header-container input[type="text"] {
+  border: 2px solid #FFD700; /* Gold border for emphasis */
+  border-radius: 8px;
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto; /* Centering the input */
+  color: #225560; /* Text color matching the background */
+  background-color: #fff;
+}
+
+.venue-header-container input[type="text"]::placeholder {
+  color: #666;
+}
+
+
+.venue-card {
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.venue-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.venue-card .venue-info {
+  padding: 10px;
 }
 
 /* Event listings styling */
 .events-container {
-  margin-top: 20px;
-  width: 100%; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 60px 170px;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: auto;
+}
+.events-header-container {
+  align-items: center;
+  background-color: #4E342E; /* Deep brown for a warm feel */
+  color: #FFF8E1; /* Off-white for contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.events-header-container h1,
+.events-header-container p {
+  margin: 0;
+  color: inherit; /* Uses the color from the container */
+}
+
+.events-header-container input[type="text"] {
+  border: 2px solid #FFF8E1; 
+  border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #4E342E;
+  background-color: #fff;
 }
 
-/* Individual event item styling */
-.event-container {
-  margin-bottom: 15px; 
+.events-header-container input[type="text"]::placeholder {
+  color: #666;
 }
 
-/* Review section styling */
-.review-container {
-  margin-top: 20px;
-  width: 100%; /* Adjust width as necessary */
+.event-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event-image img {
+  width: 100%;
+  height: auto;
+  max-width: 200px; 
+
+}
+
+.event-item .title, .event-item .description, .event-item .subtitle {
+  padding: 12px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .venue-container, .events-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .venue-container, .events-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .venue-card img, .event-item img {
+    max-height: 150px;
+  }
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+  gap: 24px; 
+  justify-content: center; 
+  padding: 60px 20px; 
+  overflow: hidden;
+}
+.reviews-header-container {
+  align-items: center;
+  background-color: #006064; 
+  color: #E0F7FA; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.reviews-header-container h1,
+.reviews-header-container p {
+  margin: 0;
+  color: inherit; 
+}
+
+.reviews-header-container input[type="text"] {
+  border: 2px solid #E0F7FA; 
+  border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #006064; 
+  background-color: #fff;
 }
 
-/* Individual review item styling */
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+
+input[type="text"], input[type="number"], textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+
 .review {
-  margin-bottom: 15px; 
+  background-color: #fefefee0;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 20px; 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
+
+.review h2 {
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 20px;
+  color: #000000;
+  margin: 0; 
+}
+
+.review p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  color: #666; 
+  margin: 0; 
+}
+
+.review p:last-child {
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 14px;
+  color: #000000;
+  margin-top: 12px;
+  align-self: flex-end; 
+}
+
 
 .top-bar {
   align-items: center;
@@ -60,8 +345,7 @@
   height: 80px;
   justify-content: space-between;
   padding: 20px;
-  position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .top-bar .group {
@@ -78,18 +362,13 @@
   font-weight: 500;
   letter-spacing: 0;
   line-height: 36px;
-  padding: 0 -100px;
-  margin-top: -4px;
 }
 
 .top-bar .navbar {
-  align-items: center;
-  background-color: #ffffff;
   display: inline-flex;
-  flex: 0 0 auto;
   gap: 40px;
+  align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .top-bar .tab {
@@ -97,40 +376,208 @@
   font-family: "Roboto-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
+  text-decoration: none; 
   letter-spacing: 0;
   line-height: 24px;
-  position: center;
+  position: relative;
   white-space: nowrap;
-  width: fit-content;
 }
 
 .top-bar .textfield {
-  align-items: center;
-  border: 1px solid;
-  border-color: #e8dada1a;
-  border-radius: 6px;
   display: flex;
-  gap: 4px;
-  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #e8dada1a;
+  border-radius: 6px;
   padding: 8px;
-  position: relative;
   width: 200px;
+  gap: 4px; 
 }
 
-.top-bar .text {
-  color: #36333380;
-  flex: 1;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 20px;
-  margin-top: -1px;
-  position: relative;
+.top-bar input[type="text"] {
+  border: none;
+  outline: none;
+  flex-grow: 1; 
 }
 
 .top-bar .search-button {
-  height: 20px;
-  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar .search-button img {
+  width: 20px; 
+  height: auto;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.title {
+  color: #f6f6f6;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.item {
+  background-color: #d13c3c; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  width: 80%; 
+  max-width: 500px; 
+}
+
+.frame {
+  background-color: #0000000d;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.icon {
+  width: 100%; 
+  height: auto;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%; 
+}
+
+.text-wrapper, .subtitle, .subtitle-2 {
+  text-align: center;
+}
+
+.primary {
+  background-color: #007bff; 
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tickets-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.seats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20px, auto)); 
+  gap: 5px;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.seat {
+  cursor: pointer;
+  display: inline-block;
   width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px;
+  background-color: #90caf9; 
+  color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.seat:hover {
+  background-color: #2196f3; 
+  transform: scale(1.2); 
+}
+
+.seat.selected {
+  background-color: #ef5350; 
+  color: white; 
+}
+
+.stage {
+  background-color: #424242;
+  color: #fff;
+  padding: 10px 50px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 60%; 
+}
+
+.buy-tickets-btn {
+  background-color: #66bb6a; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.purchase-confirmation {
+  background-color: #eeeeee;
+  border: 1px solid #bdbdbd;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.purchase-confirmation h2 {
+  color: #66bb6a; 
+}
+
+.purchase-confirmation p {
+  margin: 5px 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .tickets-page {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .seat {
+    margin: 3px;
+    font-size: 20px; 
+  }
+
+  .stage {
+    margin: 10px 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .item {
+    width: 90%; 
+  }
 }

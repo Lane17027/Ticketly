@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const EventsPage = () => {
     const [events, setEvents] = useState([])
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -12,26 +13,39 @@ const EventsPage = () => {
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
-        }
+        };
         fetchData()
     }, [])
-    
+
     return (
-        <div className="events-page">
-            {events.map((event) => (
-                <div key={event.id} className="event-container">
-                    <h2>{event.name}</h2>
-                    <p>Date: {event.date}</p>
-                    <p>Time: {event.time}</p>
-                    <p>Description: {event.description}</p>
-                    <p>Performers: {event.performers.join(', ')}</p>
-                    <img src={event.img_url} alt={event.name} />
-                    <Link to={`/tickets/${event.id}`}>
-                        <button>Ticket</button>
+        <div>
+         <div className="events-header-container">
+            <h1>Upcoming Events</h1>
+             <p>Discover events and buy tickets</p>
+         </div>
+
+        <div className="section">
+             <div className="title">Events</div>
+             {events.map((event, index) => (
+                <div key={event.id} className={`item item-${index + 1}`}>
+                    <div className="frame">
+                    <img src={event.img_url} alt={event.name} className="icon" />
+                    </div>
+                     <div className="div">
+                         <div className="text-wrapper">{event.name}</div>
+                        <div className="subtitle">Date: {event.date}</div>
+                        <div className="subtitle">Time: {event.time}</div>
+                         <div className="subtitle-2">Description: {event.description}</div>
+                         <div className="subtitle">Performers: {event.performers.join(', ')}</div>
+                    </div>
+                     <Link to={`/tickets/${event.id}`}>
+                         <button className="primary">Ticket</button>
                     </Link>
                 </div>
             ))}
-        </div>
+         </div>
+    </div>
     )
 }
+
 export default EventsPage
