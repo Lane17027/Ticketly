@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import '../App.css'
 
 const HomePage = () => {
-    const [venueData, setVenueData] = useState(null)
-    const [eventData, setEventData] = useState(null)
-    const [reviewData, setReviewData] = useState(null)
+    const [venueData, setVenueData] = useState([])
+    const [eventData, setEventData] = useState([])
+    const [reviewData, setReviewData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const venueResponse = await axios.get('http://localhost:8000/venues')
+                const venueResponse = await axios.get('http://localhost:8000/venues/')
                 setVenueData(venueResponse.data)
 
-                const eventResponse = await axios.get('http://localhost:8000/events')
+                const eventResponse = await axios.get('http://localhost:8000/events/')
                 setEventData(eventResponse.data)
 
-                const reviewResponse = await axios.get('http://localhost:8000/reviews')
+                const reviewResponse = await axios.get('http://localhost:8000/reviews/')
                 setReviewData(reviewResponse.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -25,23 +25,22 @@ const HomePage = () => {
 
         fetchData()
     }, [])
+
     const [searchTerm, setSearchTerm] = useState('')
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value)
     }
 
-    const filteredVenues = venueData && Array.isArray(venueData) && venueData.filter((venue) => {
-        return venue.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-
-    const filteredEvents = eventData && Array.isArray(eventData) && eventData.filter((event) => {
-        return event.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-
-    const filteredReviews = reviewData && Array.isArray(reviewData) && reviewData.filter((review) => {
-        return review.text.toLowerCase().includes(searchTerm.toLowerCase())
-    })
+    const filteredVenues = venueData.filter(venue =>
+        venue.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    const filteredEvents = eventData.filter(event =>
+        event.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    const filteredReviews = reviewData.filter(review =>
+        review.text.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
     return (
         <div>
@@ -51,35 +50,32 @@ const HomePage = () => {
                 <input type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />
             </div>
             <div className="venue-container">
-                {filteredVenues && filteredVenues.map((venue) => (
+                {filteredVenues.map(venue => (
                     <div key={venue.id}>
                         <h2>{venue.name}</h2>
                         <p>{venue.city}, {venue.state} {venue.zipcode}</p>
-                        <p>{venue.streetAddress}</p>
-                        <button onClick={() => handleVenueClick(venue.id)}>Go to Venue</button>
+                        <p>{venue.street_address}</p>
                     </div>
                 ))}
             </div>
-            <div className="event-container">
-                {filteredEvents && filteredEvents.map((event) => (
-                    <div key={event.id}>
+            <div className="events-container">
+                {filteredEvents.map((event) => (
+                    <div key={event.id} className="event-container">
                         <h2>{event.name}</h2>
                         <p>Date: {event.date}</p>
                         <p>Time: {event.time}</p>
-                        <p>Type: {event.type ? 'Sports' : 'Other'}</p>
-                        <button onClick={() => handleEventClick(event.id)}>Go to Event</button>
+                        <p>Description: {event.description}</p>
+                        <p>Performers: {event.performers.join(', ')}</p>
+                        <img src={event.img_url} alt={event.name} />
                     </div>
                 ))}
             </div>
             <div className="review-container">
-                {filteredReviews && filteredReviews.map((review) => (
-                    <div key={review.id}>
-                        <h2>Review</h2>
-                        <p>Venue: {review.venue}</p>
-                        <p>Event: {review.event}</p>
-                        <p>Text: {review.text}</p>
+                {filteredReviews.map((review) => (
+                    <div key={review.id} className="review">
+                        <h2>{review.title}</h2>
+                        <p>{review.text}</p>
                         <p>Rating: {review.rating}</p>
-                        <button onClick={() => handleReviewClick(review.id)}>Go to Review</button>
                     </div>
                 ))}
             </div>

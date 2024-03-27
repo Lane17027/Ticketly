@@ -1,42 +1,136 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* General page styling, assuming your entire page should follow a specific theme */
+.page-container {
+  background-color: #ffffff; /* Adjust this to match your page's desired background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Header section styling */
+.header-container {
+  text-align: center; /* Centering header text */
+  padding: 20px; /* Add more padding if needed */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styles for venue listings */
+.venue-container {
+  margin-top: 20px;
+  width: 100%; /* Adjust width as necessary */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Individual venue item styling */
+.venue-container div {
+  margin-bottom: 15px; /* Space between venue entries */
 }
 
-.card {
-  padding: 2em;
+/* Event listings styling */
+.events-container {
+  margin-top: 20px;
+  width: 100%; 
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
 }
 
-.read-the-docs {
-  color: #888;
+/* Individual event item styling */
+.event-container {
+  margin-bottom: 15px; 
+}
+
+/* Review section styling */
+.review-container {
+  margin-top: 20px;
+  width: 100%; /* Adjust width as necessary */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* Individual review item styling */
+.review {
+  margin-bottom: 15px; 
+}
+
+.top-bar {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  gap: 20px;
+  height: 80px;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+  width: 1440px;
+}
+
+.top-bar .group {
+  height: 28.26px;
+  position: relative;
+  width: 66.19px;
+}
+
+.top-bar .title {
+  color: #000000;
+  flex: 1;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 36px;
+  padding: 0 -100px;
+  margin-top: -4px;
+}
+
+.top-bar .navbar {
+  align-items: center;
+  background-color: #ffffff;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 40px;
+  justify-content: center;
+  position: relative;
+}
+
+.top-bar .tab {
+  color: #000000;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.top-bar .textfield {
+  align-items: center;
+  border: 1px solid;
+  border-color: #e8dada1a;
+  border-radius: 6px;
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  padding: 8px;
+  position: relative;
+  width: 200px;
+}
+
+.top-bar .text {
+  color: #36333380;
+  flex: 1;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 20px;
+  margin-top: -1px;
+  position: relative;
+}
+
+.top-bar .search-button {
+  height: 20px;
+  position: relative;
+  width: 20px;
 }

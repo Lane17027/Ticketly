@@ -1,37 +1,39 @@
-import React from 'react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from "react"
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import "../App.css"
 
-    const NavBar = () => {
-        const [searchQuery, setSearchQuery] = useState('')
+const NavBar = () => {
+    const [searchQuery, setSearchQuery] = useState('')
 
-        const handleSearch = (e) => {
-            setSearchQuery(e.target.value)
-        }
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value)
+    }
 
-        return (
-            <nav>
-                <div className="logo">
-                    <img src="logo.png" alt="Logo" className="logo-image" />
-                    <span className="logo-text">Ticketly</span>
+    return (
+        <div className="top-bar">
+            <div className="logo group"> 
+            <h2 className="title">Ticketly</h2> 
                 </div>
-                <ul className="nav-links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/venue">Venue</Link></li>
-                <li><Link to="/events">Events</Link></li>
-                <li><Link to="/reviews">Reviews</Link></li>
-                </ul>
-                <div className="search-bar">
+                <div className="navbar">
+                    <Link to="/" className="tab">Home</Link>
+                    <Link to="/venue" className="tab">Venue</Link>
+                    <Link to="/events" className="tab">Events</Link>
+                    <Link to="/reviews" className="tab">Reviews</Link>
+                </div>
+                <div className="textfield">
                     <input
                         type="text"
                         placeholder="Search"
                         value={searchQuery}
                         onChange={handleSearch}
+                        className="text" 
                     />
-                    <i className="check-search"></i>
+                    <button className="search-button">Search</button>
                 </div>
-            </nav>
+                
+            </div>
         )
-    }
+}
 
 export default NavBar
