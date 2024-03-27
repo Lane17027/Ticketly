@@ -21,19 +21,8 @@ const NavBar = () => {
                     <Link to="/events" className="tab">Events</Link>
                     <Link to="/reviews" className="tab">Reviews</Link>
                 </div>
-                <div className="textfield">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        value={searchQuery}
-                        onChange={handleSearch}
-                        className="text" 
-                    />
-                    <button className="search-button">Search</button>
                 </div>
-                
-            </div>
-        )
+    )
 }
 
 export default NavBar

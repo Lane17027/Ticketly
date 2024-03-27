@@ -52,6 +52,47 @@
   padding: 20px;
   overflow-x: auto;
 }
+.venue-header-container {
+  align-items: center;
+  background-color: #225560; /* Different shade to distinguish venue page */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.venue-header-container h1 {
+  color: #FFD700; /* Gold color for a bit of flair */
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 32px;
+  margin: 0;
+}
+
+.venue-header-container p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 18px;
+  color: #EAEAEA; /* Light grey for subtle contrast */
+  margin: 0;
+}
+
+.venue-header-container input[type="text"] {
+  border: 2px solid #FFD700; /* Gold border for emphasis */
+  border-radius: 8px;
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto; /* Centering the input */
+  color: #225560; /* Text color matching the background */
+  background-color: #fff;
+}
+
+.venue-header-container input[type="text"]::placeholder {
+  color: #666;
+}
+
 
 .venue-card {
   flex: 0 0 auto;
@@ -82,6 +123,38 @@
   overflow: hidden;
   max-width: 1440px;
   margin: auto;
+}
+.events-header-container {
+  align-items: center;
+  background-color: #4E342E; /* Deep brown for a warm feel */
+  color: #FFF8E1; /* Off-white for contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.events-header-container h1,
+.events-header-container p {
+  margin: 0;
+  color: inherit; /* Uses the color from the container */
+}
+
+.events-header-container input[type="text"] {
+  border: 2px solid #FFF8E1; 
+  border-radius: 8px;
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #4E342E;
+  background-color: #fff;
+}
+
+.events-header-container input[type="text"]::placeholder {
+  color: #666;
 }
 
 .event-item {
@@ -122,8 +195,7 @@
     max-height: 150px;
   }
 }
-/* Review section styling */
-/* Reviews list container styling for grid layout */
+
 .reviews-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
@@ -132,6 +204,104 @@
   padding: 60px 20px; 
   overflow: hidden;
 }
+.reviews-header-container {
+  align-items: center;
+  background-color: #006064; 
+  color: #E0F7FA; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.reviews-header-container h1,
+.reviews-header-container p {
+  margin: 0;
+  color: inherit; 
+}
+
+.reviews-header-container input[type="text"] {
+  border: 2px solid #E0F7FA; 
+  border-radius: 8px;
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #006064; 
+  background-color: #fff;
+}
+
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+
+input[type="text"], input[type="number"], textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
 
 .review {
   background-color: #fefefee0;
@@ -166,7 +336,7 @@
   align-self: flex-end; 
 }
 
-/* Navigation bar (Top Bar) styling */
+
 .top-bar {
   align-items: center;
   background-color: #ffffff;
@@ -206,7 +376,7 @@
   font-family: "Roboto-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
-  text-decoration: none; /* Remove underline from links */
+  text-decoration: none; 
   letter-spacing: 0;
   line-height: 24px;
   position: relative;
@@ -220,13 +390,13 @@
   border-radius: 6px;
   padding: 8px;
   width: 200px;
-  gap: 4px; /* Space between input field and search icon */
+  gap: 4px; 
 }
 
 .top-bar input[type="text"] {
   border: none;
   outline: none;
-  flex-grow: 1; /* Allows input to fill space */
+  flex-grow: 1; 
 }
 
 .top-bar .search-button {
@@ -237,8 +407,177 @@
   justify-content: center;
   align-items: center;
 }
-/* Ensures search button does not have a background or border and is clickable */
+
 .top-bar .search-button img {
   width: 20px; 
   height: auto;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.title {
+  color: #f6f6f6;
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.item {
+  background-color: #d13c3c; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  width: 80%; 
+  max-width: 500px; 
+}
+
+.frame {
+  background-color: #0000000d;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.icon {
+  width: 100%; 
+  height: auto;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%; 
+}
+
+.text-wrapper, .subtitle, .subtitle-2 {
+  text-align: center;
+}
+
+.primary {
+  background-color: #007bff; 
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tickets-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.seats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20px, auto)); 
+  gap: 5px;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.seat {
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px;
+  background-color: #90caf9; 
+  color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.seat:hover {
+  background-color: #2196f3; 
+  transform: scale(1.2); 
+}
+
+.seat.selected {
+  background-color: #ef5350; 
+  color: white; 
+}
+
+.stage {
+  background-color: #424242;
+  color: #fff;
+  padding: 10px 50px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 60%; 
+}
+
+.buy-tickets-btn {
+  background-color: #66bb6a; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.purchase-confirmation {
+  background-color: #eeeeee;
+  border: 1px solid #bdbdbd;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.purchase-confirmation h2 {
+  color: #66bb6a; 
+}
+
+.purchase-confirmation p {
+  margin: 5px 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .tickets-page {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .seat {
+    margin: 3px;
+    font-size: 20px; 
+  }
+
+  .stage {
+    margin: 10px 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .item {
+    width: 90%; 
+  }
 }
