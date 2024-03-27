@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const ReviewsPage = () => {
     const [title, setTitle] = useState('')
@@ -6,17 +7,16 @@ const ReviewsPage = () => {
     const [rating, setRating] = useState(0)
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-       
+        e.preventDefault();
     }
+
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/reviews/')
-                const data = response.data
-                setReviews(data)
+                setReviews(response.data);
             } catch (error) {
                 console.error('Error fetching reviews:', error)
             }
@@ -51,12 +51,23 @@ const ReviewsPage = () => {
                     value={rating}
                     min={1}
                     max={5}
-                    onChange={(e) => setRating(parseInt(e.target.value))}
+                    onChange={(e) => setRating(parseInt(e.target.value, 10))}
                 />
 
                 <button type="submit">Submit Review</button>
             </form>
+
+            <div className="reviews-list">
+                {reviews.map((review) => (
+                    <div key={review.id} className="review">
+                        <h2>{review.title}</h2>
+                        <p>{review.text}</p>
+                        <p>Rating: {review.rating}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
+
 export default ReviewsPage
