@@ -24,8 +24,8 @@ class ReviewVenueSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name')
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
-    venue = ReviewVenueSerializer()
-    event = ReviewEventSerializer()
+    venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all())
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all())
 
     class Meta:
         model = Review

@@ -29,7 +29,7 @@ const ReviewsPage = () => {
         console.log(reviewData)
         try {
             if (editingId) {
-                await axios.put('http://localhost:8000/reviews/${editingId}/', reviewData)
+                await axios.put(`http://localhost:8000/reviews/${editingId}/`, reviewData)
             } else {
                 await axios.post('http://localhost:8000/reviews/', reviewData)
             }
@@ -72,7 +72,7 @@ const ReviewsPage = () => {
                     type="text"
                     id="title"
                     value={title}
-                    onChange = {(e) => setTitle(e.target.value)}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
 
                 <label htmlFor="text">Text:</label>
@@ -98,7 +98,7 @@ const ReviewsPage = () => {
                     id='venueId'
                     value={venueId}
                     onChange={(e) => setVenueId(e.target.value)}
-                    />
+                />
 
                 <label htmlFor='eventId'>Event ID:</label>
                 <input
@@ -106,7 +106,7 @@ const ReviewsPage = () => {
                     id='eventId'
                     value={eventId}
                     onChange={(e) => setEventId(e.target.value)}
-                    />
+                />
 
                 <button type="submit">Submit Review</button>
             </form>
