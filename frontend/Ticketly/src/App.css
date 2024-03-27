@@ -1,57 +1,172 @@
-/* General page styling, assuming your entire page should follow a specific theme */
+/* General page styling */
 .page-container {
-  background-color: #ffffff; /* Adjust this to match your page's desired background */
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-/* Header section styling */
+/* Header container styling */
 .header-container {
-  text-align: center; /* Centering header text */
-  padding: 20px; /* Add more padding if needed */
+  align-items: center;
+  background-color: #00000099;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 20px;
+  width: 100%;
+  color: #ffffff;
 }
 
-/* Styles for venue listings */
+.header-container h1 {
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.header-container p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.header-container input {
+  align-self: center;
+  border: 1px solid #0000001a;
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: 360px;
+}
+
+/* Venue listings styling */
 .venue-container {
-  margin-top: 20px;
-  width: 100%; /* Adjust width as necessary */
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  overflow-x: auto;
 }
 
-/* Individual venue item styling */
-.venue-container div {
-  margin-bottom: 15px; /* Space between venue entries */
+.venue-card {
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.venue-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.venue-card .venue-info {
+  padding: 10px;
 }
 
 /* Event listings styling */
 .events-container {
-  margin-top: 20px;
-  width: 100%; 
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for separation */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 60px 170px;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: auto;
 }
 
-/* Individual event item styling */
-.event-container {
-  margin-bottom: 15px; 
+.event-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event-image img {
+  width: 100%;
+  height: auto;
+  max-width: 200px; 
+
 }
 
+.event-item .title, .event-item .description, .event-item .subtitle {
+  padding: 12px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .venue-container, .events-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .venue-container, .events-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .venue-card img, .event-item img {
+    max-height: 150px;
+  }
+}
 /* Review section styling */
-.review-container {
-  margin-top: 20px;
-  width: 100%; /* Adjust width as necessary */
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+/* Reviews list container styling for grid layout */
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+  gap: 24px; 
+  justify-content: center; 
+  padding: 60px 20px; 
+  overflow: hidden;
 }
 
-/* Individual review item styling */
 .review {
-  margin-bottom: 15px; 
+  background-color: #fefefee0;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 20px; 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+.review h2 {
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 20px;
+  color: #000000;
+  margin: 0; 
+}
+
+.review p {
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  color: #666; 
+  margin: 0; 
+}
+
+.review p:last-child {
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 14px;
+  color: #000000;
+  margin-top: 12px;
+  align-self: flex-end; 
+}
+
+/* Navigation bar (Top Bar) styling */
 .top-bar {
   align-items: center;
   background-color: #ffffff;
@@ -60,8 +175,7 @@
   height: 80px;
   justify-content: space-between;
   padding: 20px;
-  position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .top-bar .group {
@@ -78,18 +192,13 @@
   font-weight: 500;
   letter-spacing: 0;
   line-height: 36px;
-  padding: 0 -100px;
-  margin-top: -4px;
 }
 
 .top-bar .navbar {
-  align-items: center;
-  background-color: #ffffff;
   display: inline-flex;
-  flex: 0 0 auto;
   gap: 40px;
+  align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .top-bar .tab {
@@ -97,40 +206,39 @@
   font-family: "Roboto-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
+  text-decoration: none; /* Remove underline from links */
   letter-spacing: 0;
   line-height: 24px;
-  position: center;
+  position: relative;
   white-space: nowrap;
-  width: fit-content;
 }
 
 .top-bar .textfield {
-  align-items: center;
-  border: 1px solid;
-  border-color: #e8dada1a;
-  border-radius: 6px;
   display: flex;
-  gap: 4px;
-  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #e8dada1a;
+  border-radius: 6px;
   padding: 8px;
-  position: relative;
   width: 200px;
+  gap: 4px; /* Space between input field and search icon */
 }
 
-.top-bar .text {
-  color: #36333380;
-  flex: 1;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 20px;
-  margin-top: -1px;
-  position: relative;
+.top-bar input[type="text"] {
+  border: none;
+  outline: none;
+  flex-grow: 1; /* Allows input to fill space */
 }
 
 .top-bar .search-button {
-  height: 20px;
-  position: relative;
-  width: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Ensures search button does not have a background or border and is clickable */
+.top-bar .search-button img {
+  width: 20px; 
+  height: auto;
 }

@@ -66,7 +66,9 @@ const HomePage = () => {
                         <p>Time: {event.time}</p>
                         <p>Description: {event.description}</p>
                         <p>Performers: {event.performers.join(', ')}</p>
-                        <img src={event.img_url} alt={event.name} />
+                        <div className="event-image">
+                            <img src={event.img_url} alt={event.name} />
+                        </div>
                     </div>
                 ))}
             </div>
