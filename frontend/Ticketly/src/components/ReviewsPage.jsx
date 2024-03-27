@@ -29,7 +29,7 @@ const ReviewsPage = () => {
         console.log(reviewData)
         try {
             if (editingId) {
-                await axios.put('http://localhost:8000/reviews/${editingId}/', reviewData)
+                await axios.put(`http://localhost:8000/reviews/${editingId}/`, reviewData)
             } else {
                 await axios.post('http://localhost:8000/reviews/', reviewData)
             }
