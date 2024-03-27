@@ -29,7 +29,7 @@ const ReviewsPage = () => {
         console.log(reviewData)
         try {
             if (editingId) {
-                await axios.put('http://localhost:8000/reviews/${editingId}/', reviewData)
+                await axios.put(`http://localhost:8000/reviews/${editingId}/`, reviewData)
             } else {
                 await axios.post('http://localhost:8000/reviews/', reviewData)
             }
@@ -64,7 +64,6 @@ const ReviewsPage = () => {
     }
 
     return (
-        <div>
             <div className="reviews-header-container">
                 <h1>Customer Reviews</h1>
                 <p>See what others are saying</p>
