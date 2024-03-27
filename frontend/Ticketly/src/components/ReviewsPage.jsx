@@ -69,6 +69,7 @@ const ReviewsPage = () => {
             <h1>Customer Reviews</h1>
             <p>See what others are saying</p>
           </div>
+      
           <div>
             <h1>Review Page</h1>
             <form onSubmit={handleSubmit}>
@@ -79,12 +80,14 @@ const ReviewsPage = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
+      
               <label htmlFor="text">Text:</label>
               <textarea
                 id="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
               ></textarea>
+      
               <label htmlFor="rating">Rating:</label>
               <input
                 type="number"
@@ -94,6 +97,7 @@ const ReviewsPage = () => {
                 max={5}
                 onChange={(e) => setRating(parseInt(e.target.value, 10))}
               />
+      
               <label htmlFor="venueId">Venue ID:</label>
               <input
                 type="text"
@@ -101,6 +105,7 @@ const ReviewsPage = () => {
                 value={venueId}
                 onChange={(e) => setVenueId(e.target.value)}
               />
+      
               <label htmlFor="eventId">Event ID:</label>
               <input
                 type="text"
@@ -108,8 +113,10 @@ const ReviewsPage = () => {
                 value={eventId}
                 onChange={(e) => setEventId(e.target.value)}
               />
+      
               <button type="submit">Submit Review</button>
             </form>
+      
             <div className="reviews-list">
               {reviews.map((review) => (
                 <div key={review.id} className="review">
@@ -124,5 +131,6 @@ const ReviewsPage = () => {
           </div>
         </div>
       )
-}
+}      
+
 export default ReviewsPage
