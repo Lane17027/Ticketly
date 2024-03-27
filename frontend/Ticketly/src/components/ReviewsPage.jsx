@@ -64,7 +64,6 @@ const ReviewsPage = () => {
     }
 
     return (
-        <div>
             <div className="reviews-header-container">
                 <h1>Customer Reviews</h1>
                 <p>See what others are saying</p>
