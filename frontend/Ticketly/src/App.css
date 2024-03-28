@@ -1,12 +1,4 @@
-/* General page styling */
-.page-container {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+
 
 /* Header container styling */
 .header-container {
@@ -24,7 +16,7 @@
 
 .header-container h1 {
   font-family: "Roboto-Bold", Helvetica;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 700;
   text-align: center;
 }
@@ -43,29 +35,118 @@
   padding: 8px 12px;
   width: 360px;
 }
+.top-bar {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  gap: 20px;
+  height: 80px;
+  justify-content: space-between;
+  padding: 0 20px; /* Adjust padding for better spacing on smaller screens */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Adds subtle shadow for depth */
+}
 
-/* Venue listings styling */
+.top-bar .group {
+  height: 28.26px;
+  position: relative;
+  width: 66.19px;
+}
+
+.top-bar .title {
+  color: #000000;
+  flex-grow: 1; /* Allows the title to take available space */
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 24px; /* Adjusted for better visibility on all devices */
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: left; /* Ensures text alignment is consistent */
+}
+
+.top-bar .navbar {
+  display: flex;
+  gap: 20px; /* Adjust gap for better spacing */
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar .tab {
+  color: #000000;
+  font-family: "Roboto-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0;
+  line-height: 24px;
+  padding: 10px; /* Adds padding for larger clickable area */
+  border-radius: 4px; /* Optional: Adds rounded corners for aesthetic */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.top-bar .tab:hover {
+  background-color: #f8f9fa; /* Light background on hover for feedback */
+}
+
+.top-bar .textfield {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e8dada1a;
+  border-radius: 6px;
+  padding: 8px;
+  width: 250px; /* Increased width for better visibility */
+  gap: 4px;
+}
+
+.top-bar .textfield input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .top-bar .navbar,
+  .top-bar .textfield {
+    justify-content: space-around; /* Adjusts alignment for smaller screens */
+    width: 100%; /* Full width for better responsiveness */
+  }
+
+  .top-bar .title {
+    margin-bottom: 10px; /* Adds space between the title and navigation */
+  }
+}
+
 .venue-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  overflow-x: auto;
+  gap: 40px;
+  padding: 60px 170px;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: auto;
 }
+
 .venue-header-container {
   align-items: center;
-  background-color: #225560; /* Different shade to distinguish venue page */
+  background-color: #000000;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  padding: 40px 20px;
+  width: 120%;
+  padding: 10px 0px;
   text-align: center;
 }
 
 .venue-header-container h1 {
-  color: #FFD700; /* Gold color for a bit of flair */
+  color: #E0F7FA;
   font-family: "Roboto-Bold", Helvetica;
   font-size: 32px;
   margin: 0;
@@ -74,18 +155,18 @@
 .venue-header-container p {
   font-family: "Roboto-Regular", Helvetica;
   font-size: 18px;
-  color: #EAEAEA; /* Light grey for subtle contrast */
+  color: #EAEAEA;
   margin: 0;
 }
 
 .venue-header-container input[type="text"] {
-  border: 2px solid #FFD700; /* Gold border for emphasis */
+  border: 2px solid #E0F7FA;
   border-radius: 8px;
   padding: 10px;
   width: 80%;
   max-width: 500px;
-  margin: 0 auto; /* Centering the input */
-  color: #225560; /* Text color matching the background */
+  margin: 0 auto;
+  color: #030404;
   background-color: #fff;
 }
 
@@ -93,26 +174,67 @@
   color: #666;
 }
 
-
 .venue-card {
-  flex: 0 0 auto;
   background-color: #ffffff;
-  border-radius: 6px;
   border: 1px solid #ddd;
-  padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .venue-card img {
   width: 100%;
+  height: auto;
   max-height: 200px;
   object-fit: cover;
-  border-radius: 6px 6px 0 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.venue-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .venue-card .venue-info {
-  padding: 10px;
+  padding: 20px;
+  text-align: center;
 }
+
+.venue-card button {
+  background-color: #d13c3c;
+  color: white;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-family: "Roboto-Medium", Helvetica;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.venue-card button:hover {
+  background-color: #b5312e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .venue-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .venue-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
 
 /* Event listings styling */
 .events-container {
@@ -125,9 +247,8 @@
   margin: auto;
 }
 .events-header-container {
-  align-items: center;
-  background-color: #4E342E; /* Deep brown for a warm feel */
-  color: #FFF8E1; /* Off-white for contrast */
+  background-color: #000000; 
+  color: #E0F7FA; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,23 +263,8 @@
   color: inherit; /* Uses the color from the container */
 }
 
-.events-header-container input[type="text"] {
-  border: 2px solid #FFF8E1; 
-  border-radius: 8px;
-  padding: 10px;
-  width: 80%;
-  max-width: 500px;
-  margin: 0 auto;
-  color: #4E342E;
-  background-color: #fff;
-}
-
-.events-header-container input[type="text"]::placeholder {
-  color: #666;
-}
-
 .event-item {
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   border: 1px solid #ddd;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -169,8 +275,9 @@
 }
 .event-image img {
   width: 100%;
-  height: auto;
-  max-width: 200px; 
+  height: 100%;
+  max-width:100px; 
+  max-height: 100px;
 
 }
 
@@ -180,21 +287,6 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-  .venue-container, .events-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .venue-container, .events-container {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-  .venue-card img, .event-item img {
-    max-height: 150px;
-  }
-}
 
 .reviews-list {
   display: grid;
@@ -206,7 +298,7 @@
 }
 .reviews-header-container {
   align-items: center;
-  background-color: #006064; 
+  background-color: #000000; 
   color: #E0F7FA; 
   display: flex;
   flex-direction: column;
@@ -244,7 +336,7 @@ form {
 }
 
 h1 {
-  color: #333;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -337,81 +429,7 @@ input[type="text"], input[type="number"], textarea {
 }
 
 
-.top-bar {
-  align-items: center;
-  background-color: #ffffff;
-  display: flex;
-  gap: 20px;
-  height: 80px;
-  justify-content: space-between;
-  padding: 20px;
-  width: 100%;
-}
 
-.top-bar .group {
-  height: 28.26px;
-  position: relative;
-  width: 66.19px;
-}
-
-.top-bar .title {
-  color: #000000;
-  flex: 1;
-  font-family: "Roboto-Medium", Helvetica;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 36px;
-}
-
-.top-bar .navbar {
-  display: inline-flex;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
-}
-
-.top-bar .tab {
-  color: #000000;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 16px;
-  font-weight: 400;
-  text-decoration: none; 
-  letter-spacing: 0;
-  line-height: 24px;
-  position: relative;
-  white-space: nowrap;
-}
-
-.top-bar .textfield {
-  display: flex;
-  align-items: center;
-  border: 1px solid #e8dada1a;
-  border-radius: 6px;
-  padding: 8px;
-  width: 200px;
-  gap: 4px; 
-}
-
-.top-bar input[type="text"] {
-  border: none;
-  outline: none;
-  flex-grow: 1; 
-}
-
-.top-bar .search-button {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.top-bar .search-button img {
-  width: 20px; 
-  height: auto;
-}
 .section {
   display: flex;
   flex-direction: column;
@@ -541,7 +559,8 @@ input[type="text"], input[type="number"], textarea {
 }
 
 .purchase-confirmation {
-  background-color: #eeeeee;
+  background-color: #66bb6a;
+  color: white;
   border: 1px solid #bdbdbd;
   padding: 20px;
   margin-top: 20px;
@@ -550,7 +569,7 @@ input[type="text"], input[type="number"], textarea {
 }
 
 .purchase-confirmation h2 {
-  color: #66bb6a; 
+  color: #f6f7f6; 
 }
 
 .purchase-confirmation p {
@@ -558,7 +577,11 @@ input[type="text"], input[type="number"], textarea {
 }
 
 
-
+@media (max-width: 1200px) {
+  .venue-container, .events-container, .page-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 768px) {
   .tickets-page {
     padding: 10px;
@@ -579,5 +602,32 @@ input[type="text"], input[type="number"], textarea {
 @media (max-width: 768px) {
   .item {
     width: 90%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .venue-container, .events-container, .page-container  {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+   .event-item img {
+    max-height: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .top-bar .navbar,
+  .top-bar .textfield {
+    justify-content: space-around; /* Adjusts alignment for smaller screens */
+    width: 100%; /* Full width for better responsiveness */
+  }
+
+  .top-bar .title {
+    margin-bottom: 10px; /* Adds space between the title and navigation */
   }
 }

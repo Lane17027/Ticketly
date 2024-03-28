@@ -3,38 +3,46 @@ import axios from 'axios'
 
 const VenuePage = () => {
     const [venues, setVenues] = useState([])
+
     useEffect(() => {
-        
-        const fetchData = async () => {
+        const fetchVenues = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/venues/')
-                const data = response.data
-                setVenues(data)
+                setVenues(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching venue data:', error)
             }
         }
-        fetchData()
+        fetchVenues()
     }, [])
-    return (
-        <div>
-            <div className="venue-header-container">
-                <h1>Explore Venues</h1>
-                <p>Find venues and see upcoming events</p>
-            </div>
 
-            <div className="venue-page">
-                {venues.map((venue) => (
-                    <div key={venue.id} className="venue-container">
-                        <h2>{venue.name}</h2>
-                        <p>City: {venue.city}</p>
-                        <p>State: {venue.state}</p>
-                        <p>Zipcode: {venue.zipCode}</p>
-                        <p>Street Address: {venue.street_address}</p>
+    return (
+            <div>
+            <div className="events-header-container">
+                <h1>Our Venues</h1>
+                <p>Discover venues for all types of events</p>
+            </div>
+            <div className="section"> 
+            <div className="title">Venues</div>
+                {venues.map((venue, index) => (
+                    <div key={venue.id} className={`item item-${index + 1}`}>
+                         <div className="frame">
+                            <img src={venue.img_url} alt={venue.name} className="icon" />
+                        </div>
+                        <div className="div"> 
+                        <h2 className="text-wrapper">{venue.name}</h2> 
+                        
+                            <div className="subtitle">{venue.city}, {venue.state} {venue.postalCode}</div> 
+                            <div className="subtitle">{venue.street_address}</div> 
+                        </div>
+                        <button onClick={() => `/venues/${venue.id}`} className="primary">
+                            View Details
+                        </button>
                     </div>
                 ))}
             </div>
         </div>
-    );
+    )
 }
+
 export default VenuePage
