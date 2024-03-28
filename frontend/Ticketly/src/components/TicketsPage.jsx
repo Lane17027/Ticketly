@@ -11,13 +11,15 @@ const TicketsPage = () => {
         const fetchEventData = async () => {
             try {
                 const response = await axios.get(`http://localhost:8000/events/${eventId}`)
-                setEventData(response.data);
+                setEventData(response.data)
             } catch (error) {
                 console.error('Error fetching event data:', error)
             }
-        };
+        }
         fetchEventData()
     }, [eventId])
+
+
 
     const handleSeatClick = (seatId) => {
         setSelectedSeats(prevSelectedSeats => {
@@ -27,7 +29,7 @@ const TicketsPage = () => {
             } else {
                 newSelectedSeats.add(seatId)
             }
-            return newSelectedSeats;
+            return newSelectedSeats
         })
     }
 
@@ -45,6 +47,19 @@ const TicketsPage = () => {
 
     const calculateTotal = () => selectedSeats.size * 20
 
+    const formatTime = (time) => {
+        const [hours, minutes] = time.split(':')
+        let period = 'am'
+        let formattedHours = parseInt(hours)
+        if (formattedHours >= 12) {
+            period = 'pm'
+            if (formattedHours > 12) {
+                formattedHours -= 12
+            }
+        }
+        return `${formattedHours}:${minutes}${period}`
+    }
+
     return (
         <div className="tickets-page">
             <h1>Select Your Seats for {eventData.name}</h1>
@@ -61,7 +76,7 @@ const TicketsPage = () => {
                     <p>You have successfully purchased {selectedSeats.size} tickets!</p>
                     <p>Total Paid: ${calculateTotal()}</p>
                     <p>Event: {eventData.name}</p>
-                    <p>Date and Time: {eventData.date} at {eventData.time}</p>
+                    <p>Date and Time: {eventData.date} at {formatTime(eventData.time)} est</p>
                 </div>
             )}
         </div>
